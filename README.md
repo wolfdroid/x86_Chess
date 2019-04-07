@@ -1,5 +1,5 @@
 # x86_Chess
-![](Documentation/Logo.png)
+![](Documentation/LogoS.png)
 
 ### Brief Description
 Classic Chess Game using x86 Assembly Language.
