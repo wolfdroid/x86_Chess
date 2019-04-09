@@ -4,12 +4,12 @@ DATASEG
 ;White Sides
 
 	;Loading File
-	whitePawn_graph		db	'wPawn.bmp'				,0
+	whitePawn_graph		db	'wPawn.bmp'			,0
 	whiteKnight_graph	db	'wKnight.bmp'			,0
 	whiteBishop_graph	db	'wBishop.bmp'			,0
-	whiteRook_graph		db	'wRook.bmp'				,0
-	whiteQueen_graph		db	'wQueen.bmp'			,0
-	whiteKing_graph		db	'wKing.bmp'				,0
+	whiteRook_graph		db	'wRook.bmp'			,0
+	whiteQueen_graph	db	'wQueen.bmp'			,0
+	whiteKing_graph		db	'wKing.bmp'			,0
 	
 	;For Drawing in the Table
 	whiteTable_graph		dw	0
@@ -23,12 +23,12 @@ DATASEG
 ;Black Sides
 
 	;Loading File
-	blackPawn_graph		db	'bPawn.bmp'				,0
+	blackPawn_graph		db	'bPawn.bmp'			,0
 	blackKnight_graph	db	'bKnight.bmp'			,0
 	blackBishop_graph	db	'bBishop.bmp'			,0
-	blackRook_graph		db	'bRook.bmp'				,0
-	blackQueen_graph		db	'bQueen.bmp'			,0
-	blackKing_graph		db	'bKing.bmp'				,0
+	blackRook_graph		db	'bRook.bmp'			,0
+	blackQueen_graph	db	'bQueen.bmp'			,0
+	blackKing_graph		db	'bKing.bmp'			,0
 	;For Drawing in the Table
 	blackTable_graph		dw	0
 							dw  blackPawn_graph
