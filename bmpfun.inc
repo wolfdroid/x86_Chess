@@ -1,13 +1,13 @@
 ;Data Segment
 DATASEG
-	fileHeight_bmp		dw	76d										;BMP File width 76 
-	fileWidth_bmp		dw	76d										;BMP File height 76
-	cordX_bmp			dw	0										;Temporary Var X
-	cordY_bmp			dw	0										;Temporary Var Y
+	fileHeight_bmp		dw	76d						;BMP File width 76 
+	fileWidth_bmp		dw	76d						;BMP File height 76
+	cordX_bmp			dw	0					;Temporary Var X
+	cordY_bmp			dw	0					;Temporary Var Y
 	errorMsg_bmp		db	'Could not open file ERROR!!!! $'		;Error Messages
-	fileHandle_bmp		dw	0
-	rowBuffer_bmp		db	1024 dup(0)								;Reserving Data for Row
-	headerBuffer_bmp	db	54 	dup(0)								;Reserving Data for Header
+	fileHandle_bmp		dw	0						;Reserve file handle
+	rowBuffer_bmp		db	1024 dup(0)					;Reserving Data for Row
+	headerBuffer_bmp	db	54 	dup(0)					;Reserving Data for Header
 
 ;Code Segment
 CODESEG
