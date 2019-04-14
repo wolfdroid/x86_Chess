@@ -140,6 +140,5 @@ CODESEG
 			; Terminate Program
 			mov ax, 4c00h
 			int 21h
-			call initendingsong
 
 	END START
