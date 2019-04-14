@@ -3,8 +3,8 @@ DATASEG
 	;For Buffer
 	buffer_io		db	0
 	;For Marker
-	markerCol_io	dw	0
-	markerRow_io	dw	0
+	markerCol_io		dw	0
+	markerRow_io		dw	0
 
 CODESEG
 	;Getting IO function
@@ -22,18 +22,19 @@ CODESEG
 			jmp getData_io
 		;Key Bindings
 		binds_io:
-			dw undefinedKey@getData 		 ; UNDEFINED
-			dw quit@userAction				 ; Esc[1d]
-			dw 15d dup(undefinedKey@getData) ; UNDEFINED
-			dw markerUp@userAction 			 ; W[17d]
-			dw 10d dup(undefinedKey@getData) ; UNDEFINED
-			dw submit@userAction 			 ; Enter[28d]
-			dw undefinedKey@getData 		 ; UNDEFINED
-			dw markerLeft@userAction 		 ; A[30d]
-			dw markerDown@userAction 		 ; S[31d]
-			dw markerRight@userAction 		 ; D[32d]
+			dw undefinedKey@getData 		 		; UNDEFINED
+			dw quit@userAction				 	; Esc[1d]
+			dw 15d dup(undefinedKey@getData) 			; UNDEFINED
+			dw markerUp@userAction 			 		; W[17d]
+			dw 10d dup(undefinedKey@getData) 			; UNDEFINED
+			dw submit@userAction 			 		; Enter[28d]
+			dw undefinedKey@getData 		 		; UNDEFINED
+			dw markerLeft@userAction 		 		; A[30d]
+			dw markerDown@userAction 		 		; S[31d]
+			dw markerRight@userAction 		 		; D[32d]
 
 	endp
+	
 	;Reading User Input
 	proc userAction
 		;User Finished Input
