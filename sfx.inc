@@ -1,224 +1,144 @@
 DATASEG
-
- clock equ es:6Ch ;clock pada es
- STOR dw ? ;deklarasi variabel tone yang kosong
+	clock equ es:6Ch 	;Clock Declaration
+	STOR dw ?		    ;for Storing Temporary Value
 
 CODESEG
+	PROC initsound
+		CALL MREE
+		CALL delay
+		CALL delay
+		CALL end_sound
+		CALL delay
 
-proc initendingsong
-	   
-		call MREE
-        call delay
-        call delay
-        call matisuara 
-        
-        call MLAA
-        call delay
-        call delay
-        call matisuara  
-        
-        call MFAA
-        call delay
-        call delay
-        call delay
-        call delay
-        call matisuara
-        
-        call MREE
-        call delay
-        call delay
-        call matisuara 
-        
-        call MLAA
-        call delay
-        call delay
-        call matisuara  
-        
-        call MFAA
-        call delay
-        call delay
-        call delay
-        call delay
-        call matisuara
-    
-        call MSII
-        call delay
-        call delay
-        call delay
-        call matisuara           
-        
-        call MLAA
-        call delay
-        call matisuara 
-        
-        call MSOOL
-        call delay
-        call delay
-        call matisuara
-        
-        call MFAA
-        call delay
-        call delay
-        call matisuara
-        
-        call MMII
-        call delay
-        call delay
-        call matisuara
-        
-        call MFAA
-        call delay
-        call delay
-        call matisuara
-        
-        call MSOOL
-        call delay
-        call delay
-        call delay
-        call delay
-        call matisuara
-		
-	ret
-endp initendingsong
+		CALL MREE
+		CALL delay
+		CALL delay
+		CALL end_sound
+		CALL delay
 
-proc initsound
-	call MREE
-	call delay
-	call delay
-	call matisuara
-	call delay
-	
-	CALL MREE
-	call delay
-	call delay
-	call matisuara
-	call delay
-	
-	CALL MREE
-	call delay
-	call delay
-	call matisuara
-	call delay
-	
-	CALL MMII
-	call delay
-	call delay
-	call matisuara
-	
-	CALL MREE
-	call delay
-	call delay
-	call matisuara
-	
-	CALL MLAA
-	call delay
-	call delay
-	call delay
-	call matisuara
-	
-	ret
-endp 
+		CALL MREE
+		CALL delay
+		CALL delay
+		CALL end_sound
+		CALL delay
 
+		CALL MMII
+		CALL delay
+		CALL delay
+		CALL end_sound
 
-		
-		proc MDOO
-					MOV     AX, 2415       
-					MOV     [STOR], AX
-					CALL    SOUNDER         ;PUTAR NADA
-					ret
-				endp 
-	
+		CALL MREE
+		CALL delay
+		CALL delay
+		CALL end_sound
 
-		proc MREE	
-					MOV     AX, 2280       
-					MOV     [STOR], AX
-					CALL    SOUNDER         ;PUTAR NADA
-					ret
-				endp 
+		CALL MLAA
+		CALL delay
+		CALL delay
+		CALL delay
+		CALL end_sound
 
-		proc MMII 
-					MOV     AX, 2031      
-					MOV     [STOR], AX
-					CALL    SOUNDER         ;PUTAR NADA
-					ret
-				endp 
-		
-		proc MFAA
-					MOV     AX, 1809       
-					MOV     [STOR], AX
-					CALL    SOUNDER         ;PUTAR NADA
-					ret
-				endp 
+		RET
+	ENDP 
+
+;Notes Declaration
+PROC MDOO
+	MOV     AX, 2415       
+	MOV     [STOR], AX
+	CALL    SOUNDER         
+	RET
+ENDP 
+
+;Re note	
+PROC MREE	
+	MOV     AX, 2280       
+	MOV     [STOR], AX
+	CALL    SOUNDER         
+	RET
+ENDP
+
+;MI note
+PROC MMII 
+	MOV     AX, 2031      
+	MOV     [STOR], AX
+	CALL    SOUNDER         
+	RET
+ENDP
+
+;FA note		
+PROC MFAA
+    MOV     AX, 1809       
+    MOV     [STOR], AX
+    CALL    SOUNDER         
+    RET
+ENDP 
+
+;SOL note				
+PROC MSOOL 
+    MOV     AX, 1715       
+    MOV     [STOR], AX
+    CALL    SOUNDER         
+    RET
+ENDP 
 				
-		proc MSOOL 
-					MOV     AX, 1715       
-					MOV     [STOR], AX
-					CALL    SOUNDER         ;PUTAR NADA
-					ret
-				endp 
-				
-				
-		proc MLAA
-					MOV     AX, 1521       
-					MOV     [STOR], AX
-					CALL    SOUNDER         ;PUTAR NADA
-					ret
-				endp 
-		
-		proc MSII
-					MOV     AX, 1355       
-					MOV     [STOR], AX
-					CALL    SOUNDER         ;PUTAR NADA
-					ret
-				endp 
+;LA note				
+PROC MLAA
+    MOV     AX, 1521       
+    MOV     [STOR], AX
+    CALL    SOUNDER        
+    RET
+ENDP 
 
-proc delay
- push ax 
- mov ax,40h 
- mov es,ax 
- mov ax,[clock] 
- 
- Ketukawal:
- cmp ax, [clock]
- mov cx, 2
- je Ketukawal
+;SI note		
+PROC MSII
+    MOV     AX, 1355       
+    MOV     [STOR], AX
+    CALL    SOUNDER        
+    RET
+ENDP 
 
- Loopdelay:
- mov ax, [clock]
- ketuk:
- cmp ax,[clock]
- je ketuk
- loop Loopdelay
- pop ax
-ret
-endp
+;Delay Function
+PROC delay
+    push ax 
+    mov ax,40h 
+    mov es,ax 
+    mov ax,[clock] 
+    ;first knock
+    first:
+    cmp ax, [clock]
+    mov cx, 2
+    je first
+    ;looping func
+    Loopdelay:
+    mov ax, [clock]
+    knock:
+    cmp ax,[clock]
+    je knock
+    loop Loopdelay
+    pop ax
+    RET
+ENDP
 
-proc sounder
- push ax
- in al, 61h
- or al, 00000011b 
- out 61h, al 
- mov al, 0B6h
- out 43h, al
- mov ax, [STOR] 
- out 42h, al 
- mov al, ah
- out 42h, al 
- pop ax
- ret
-endp
+;Speaker Initialization
+PROC sounder
+    push ax
+    in al, 61h
+    or al, 00000011b 
+    out 61h, al 
+    mov al, 0B6h
+    out 43h, al
+    mov ax, [STOR] 
+    out 42h, al 
+    mov al, ah
+    out 42h, al 
+    pop ax
+    RET
+ENDP
 
-proc matisuara
- in al,61h
- and al, 11111100b 
- out 61h, al
- ret
-endp
-	
-		
-
-
-				
-
-	
-	
+;Ending Note Function
+PROC end_sound
+    in al,61h
+    and al, 11111100b 
+    out 61h, al
+    RET
+ENDP
